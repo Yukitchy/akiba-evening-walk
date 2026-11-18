@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Akihabara After Dark — Three Routes, One Night</title><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="A proposal: Akihabara after dark — three five-hour evening routes, 16:00–21:00. Akihabara in Depth, to Ameyoko, or to Jimbocho. Pick your route.">
+<meta property="og:title" content="Akihabara After Dark — Three Routes"><meta property="og:description" content="Not the shopping tour: three five-hour evening routes through the history of Akihabara and old Tokyo. Pick the one that fits you."><meta property="og:image" content="https://yukitchy.github.io/akiba-evening-walk/img/og.jpg"><meta property="og:url" content="https://yukitchy.github.io/akiba-evening-walk/variant-b.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 fill=%22%23070918%22/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+:root{--bg:#070918;--bg2:#0C1030;--ink:#EDEFFF;--mu:#9AA3C7;--cy:#37E6FF;--pk:#FF3E9A;--ln:#232A52}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Archivo,"Noto Sans JP",sans-serif}
+.col{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:700px){.col{max-width:760px}}
+.hero{position:relative;min-height:86vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,24,.42) 0%,rgba(7,9,24,0) 34%,rgba(7,9,24,.66) 68%,var(--bg) 100%)}
+.hero .in{position:relative;z-index:2;width:100%;padding:26px 0 30px}
+.kick{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--cy);border:1px solid var(--cy);padding:6px 10px;border-radius:999px;box-shadow:0 0 14px rgba(55,230,255,.35),inset 0 0 10px rgba(55,230,255,.18)}
+h1{font-stretch:62%;font-weight:900;text-transform:uppercase;white-space:nowrap;margin:16px 0 4px;font-size:min(8.8vw,72px);line-height:.92;text-shadow:0 0 22px rgba(255,62,154,.55)}
+h1 em{font-style:normal;color:var(--pk)}
+.hero p{margin:8px 0 0;max-width:34em;color:#D8DCF5;font-size:16.5px}
+.timebar{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.timebar span{font-weight:900;letter-spacing:.08em;font-size:13px;border:1px solid var(--ln);background:rgba(12,16,48,.72);padding:8px 12px;border-radius:8px}
+.timebar b{color:var(--cy)}
+.sec{padding:38px 0 4px}
+h2{font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:27px;margin:0 0 6px;white-space:nowrap}
+h2 .n{color:var(--pk)}
+.sub{color:var(--mu);margin:0 0 18px;font-size:15px}
+.route{background:var(--bg2);border:1px solid var(--ln);border-radius:16px;padding:20px;margin-top:16px}
+.route .rt{font-weight:900;letter-spacing:.2em;font-size:12px;color:var(--cy)}
+.route.pk .rt{color:var(--pk)}
+.route h3{margin:6px 0 4px;font-size:min(5.3vw,26px);font-stretch:62%;font-weight:900;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.route .theme{margin:0 0 14px;color:#D8DCF5;font-size:15.5px;font-weight:700}
+.route img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid var(--ln);margin-bottom:14px}
+.steps{list-style:none;margin:0;padding:0 0 0 24px;position:relative}
+.steps:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--cy),var(--pk))}
+.steps li{position:relative;padding:5px 0;font-size:15px;color:#C9CEEA}
+.steps li:before{content:"";position:absolute;left:-22px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2.5px solid var(--cy)}
+.steps li b{color:var(--ink)}
+.hl{display:grid;gap:8px;margin-top:14px}
+.hl div{border:1px solid var(--ln);border-radius:10px;padding:10px 12px;font-size:14.5px;color:#C9CEEA}
+.hl div b{color:var(--cy)}
+.route.pk .hl div b{color:var(--pk)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.meta span{font-size:12px;font-weight:900;letter-spacing:.08em;border:1px solid var(--ln);border-radius:999px;padding:5px 10px;color:var(--mu)}
+.best{margin:12px 0 0;font-size:14.5px;color:var(--mu)}
+.best b{color:var(--ink)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facts div{background:var(--bg2);border:1px solid var(--ln);border-radius:14px;padding:14px}
+.facts b{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pk);margin-bottom:4px}
+.facts span{font-weight:700;font-size:14.5px;line-height:1.45;display:block}
+.know ul{margin:0;padding-left:20px;color:#C9CEEA}.know li{margin:9px 0}
+.foot{border-top:1px solid var(--ln);margin-top:40px;padding:20px 0 44px;color:var(--mu);font-size:13px;line-height:1.6}
+</style></head><body>
+<header class="hero"><img class="bg" src="img/hero-tracks.jpg" alt="Akihabara's railway lines and streets after dark"><div class="in"><div class="col">
+<span class="kick">Tour proposal &middot; Akihabara, Tokyo</span>
+<h1>After dark, <em>three ways</em></h1>
+<p>One evening, three routes. Every walk starts in Akihabara at 16:00, runs about five hours, and reads the town&rsquo;s history instead of its store list. Pick the route that fits you &mdash; we confirm the details once you choose.</p>
+<div class="timebar"><span><b>START</b> 16:00 AKIHABARA</span><span><b>END</b> ABOUT 21:00</span><span><b>ROUTES</b> A / B / C</span></div>
+</div></div></header>
+<div class="col">
+<section class="sec"><h2>Pick your <span class="n">route</span></h2><p class="sub">Same start, same hours &mdash; three different evenings.</p>
+
+<article class="route"><div class="rt">ROUTE A</div><h3>Akihabara in Depth</h3><p class="theme">One district, read deeply &mdash; how a black market became Electric Town, then the otaku capital.</p><img src="img/shrine-street.jpg" alt="The street below Kanda Myojin, lit up at night" loading="lazy">
+<ol class="steps"><li><b>Kanda Myojin at dusk</b> &mdash; the shrine on the hill</li><li><b>Back streets</b> down into the town</li><li><b>Under the tracks</b> &mdash; the parts maze</li><li><b>Chuo-dori</b> as the neon peaks</li><li><b>Radio Kaikan</b> and the night streets</li><li><b>Dinner</b> in the food lanes</li></ol>
+<div class="hl"><div><b>The shrine.</b> Founded in 730, moved to this hill in 1616 to guard Edo Castle &mdash; it still watches over the neighbourhood, and now blesses laptops too.</div><div><b>The birth of Electric Town.</b> Postwar radio-parts stalls, moved under the arches in 1949. The maze still trades.</div><div><b>Neon at its peak.</b> One street, three eras: appliances, computers, then anime and games.</div></div>
+<div class="meta"><span>ABOUT 3 KM</span><span>FINISH: AKIHABARA</span></div>
+<p class="best"><b>Best for:</b> a first evening in Akihabara, and anime or game fans who want the story behind the shops.</p></article>
+
+<article class="route pk"><div class="rt">ROUTE B</div><h3>Akiba &rarr; Okachimachi &rarr; Ameyoko</h3><p class="theme">Electric Town to market town &mdash; how working Tokyo eats, drinks and trades after dark.</p><img src="img/food-grill.jpg" alt="Street food on the grill at a market stall" loading="lazy">
+<ol class="steps"><li><b>Akihabara</b> &mdash; the Electric Town edge</li><li><b>Suehirocho</b> back streets</li><li><b>2k540</b> &mdash; artisans in the arches</li><li><b>Okachimachi</b></li><li><b>Ameyoko market</b> while the stalls are open</li><li><b>Izakaya lanes</b> under the tracks, lit up</li></ol>
+<div class="hl"><div><b>Ameyoko, honestly timed.</b> Born as a postwar black market: candy stalls made it &ldquo;Candy Store Alley&rdquo;, American-goods shops added &ldquo;America Alley&rdquo;. Shops close from about 19:00&ndash;20:00 &mdash; so the market comes first.</div><div><b>2k540.</b> Workshops in the railway arches. The name is a distance marker: 2 km 540 m from Tokyo Station.</div><div><b>The second act.</b> As the shutters fall, the under-track izakaya switch on. Dinner under the trains.</div></div>
+<div class="meta"><span>ABOUT 4 KM</span><span>FINISH: OKACHIMACHI / UENO</span></div>
+<p class="best"><b>Best for:</b> food-and-market people, repeat Tokyo visitors, and anyone who prefers everyday local Tokyo to otaku culture.</p></article>
+
+<article class="route"><div class="rt">ROUTE C</div><h3>Akiba &rarr; Kanda &rarr; Jimbocho</h3><p class="theme">Old Tokyo, page by page &mdash; a shrine, a brick viaduct, and a book town that goes quiet after dark.</p><img src="img/arches.jpg" alt="Inside the red-brick arches of the Manseibashi viaduct, now mAAch ecute" loading="lazy">
+<ol class="steps"><li><b>Kanda Myojin</b> &mdash; the shrine on the hill</li><li><b>Manseibashi &amp; mAAch</b> &mdash; coffee in the 1912 arches</li><li><b>Kanda station quarter</b> &mdash; old eateries, under-track lanes</li><li><b>Jimbocho</b> book streets while shops are open</li><li><b>The quiet book town</b> after closing</li></ol>
+<div class="hl"><div><b>The vanished station.</b> Manseibashi opened in 1912, designed by Tatsuno Kingo of Tokyo Station; closed 1943, its viaduct lives on as mAAch ecute.</div><div><b>Old Kanda.</b> One of Edo&rsquo;s merchant and craftsman quarters &mdash; the back streets still carry it.</div><div><b>Jimbocho, two faces.</b> Around 130 secondhand bookshops, gathered as the Meiji-era universities arrived. Browse first; then the shuttered, lamplit street.</div></div>
+<div class="meta"><span>ABOUT 4 KM</span><span>FINISH: JIMBOCHO</span></div>
+<p class="best"><b>Best for:</b> book lovers and history lovers, and anyone who prefers the calm of old Tokyo to the neon.</p></article>
+</section>
+
+<section class="sec"><h2>The <span class="n">practical</span> part</h2><p class="sub">Shared by all three routes</p>
+<div class="facts">
+<div><b>Start</b><span>16:00, JR Akihabara Station, Electric Town exit area</span></div>
+<div><b>Length</b><span>About 5 hours, finishing around 21:00</span></div>
+<div><b>Walking</b><span>Roughly 3&ndash;4 km, mostly flat; comfortable shoes, please</span></div>
+<div><b>Style</b><span>Private walk with a local guide, Yuuki</span></div>
+<div><b>Flexible</b><span>Stops bend with weather, crowds and curiosity</span></div>
+<div><b>Photos</b><span>Your guide shoots along the way and shares an album</span></div>
+</div></section>
+<section class="sec know"><h2>Good to <span class="n">know</span></h2><ul><li><b>January evenings are cold</b> &mdash; bring a warm layer; we are outside for much of the walk.</li><li><b>Closing times differ by route:</b> small parts shops and market stalls wind down around 19:00&ndash;20:00; big stores, arcades and restaurants stay open late. Each route is sequenced around that.</li><li><b>Bring some cash</b> &mdash; small stalls, market shops and shrine charms are often cash only.</li><li><b>Shrine steps:</b> routes A and C include one flight of steps at Kanda Myojin.</li></ul></section>
+<p class="foot">A proposal page for a private evening walk in Akihabara, guided by Yuuki (Anime Sensei). Dates and details to be confirmed once a route is chosen. All photographs are the guide&rsquo;s own; the shrine photograph shows the street below Kanda Myojin on a winter evening. Historical notes checked against the Japan Tourism Agency, the Akihabara Electrical Town Organization, Kanda Myojin and JR East histories, November 2026.</p>
+</div></body></html>
