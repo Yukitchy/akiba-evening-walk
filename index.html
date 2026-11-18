@@ -1,49 +1,204 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Evening Walk Proposal — 5 Design Variants</title><meta name="robots" content="noindex,nofollow">
-<meta name="description" content="Five design variants of the Akihabara evening-walk proposal page: three routes (Akihabara in Depth / to Ameyoko / to Jimbocho), 16:00–21:00. Compare and pick a design.">
-<meta property="og:title" content="Evening Walk Proposal — 5 Designs"><meta property="og:description" content="Three evening routes from Akihabara, five ways to present them. Compare the designs and pick one."><meta property="og:image" content="https://yukitchy.github.io/akiba-evening-walk/img/og.jpg"><meta property="og:url" content="https://yukitchy.github.io/akiba-evening-walk/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 fill=%22%23121212%22/%3E%3C/svg%3E">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Akihabara After Dark — Three Routes, One Night</title><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="A proposal: Akihabara after dark — three evening routes through the history of Electric Town and old Tokyo. Akihabara in Depth, to Ameyoko, or to Jimbocho. Pick your route.">
+<meta property="og:title" content="Akihabara After Dark — Three Routes"><meta property="og:description" content="Not the shopping tour: three evening routes through the history of Akihabara and old Tokyo. Pick the one that fits you."><meta property="og:image" content="https://yukitchy.github.io/akiba-evening-walk/img/og-final.jpg"><meta property="og:url" content="https://yukitchy.github.io/akiba-evening-walk/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 fill=%22%23070918%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#ECEAE3;color:#121212;font:16px/1.55 Archivo,"Noto Sans JP",sans-serif}
-.col{max-width:860px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 60px max(16px,env(safe-area-inset-left,0px))}
-header{padding:34px 0 6px}
-.kick{font-size:12.5px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:#D9342B}
-h1{font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:min(8.2vw,54px);line-height:.95;margin:8px 0 10px;white-space:nowrap}
-header p{margin:0;max-width:38em;color:#4A463E}
-.card{background:#fff;border:1px solid #DDD8CB;border-radius:18px;padding:20px;margin-top:26px;box-shadow:0 2px 10px rgba(20,18,10,.05)}
-.card .hd{display:flex;gap:14px;align-items:flex-start}
-.badge{flex:none;width:46px;height:46px;border-radius:12px;background:#121212;color:#fff;display:flex;align-items:center;justify-content:center;font-stretch:62%;font-weight:900;font-size:24px}
-.card h2{margin:0;font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:23px;line-height:1.05;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card .one{margin:3px 0 0;color:#66625A;font-size:14.5px}
-.pv{margin-top:16px;border:1px solid #E3DED2;border-radius:12px;overflow:hidden;background:#F7F5F0;height:430px;position:relative}
-.pv iframe{width:200%;height:200%;border:0;transform:scale(.5);transform-origin:0 0;pointer-events:none}
-.open{display:inline-block;margin-top:14px;background:#D9342B;color:#fff;font-weight:900;text-decoration:none;padding:11px 18px;border-radius:10px;font-size:15px}
-.note{margin-top:34px;color:#66625A;font-size:13.5px;line-height:1.65}
-</style></head><body><div class="col">
-<header><div class="kick">For Kioka / Japan Local Experience &middot; proposal page</div>
-<h1>Evening walk &mdash; 5 designs</h1>
-<p>The same page five ways: a proposal offering the guest <b>three evening routes from Akihabara</b> (16:00&ndash;21:00) &mdash; A: Akihabara in Depth, B: to Okachimachi &amp; Ameyoko, C: to Kanda &amp; Jimbocho. No prices, no dates. Tell me the letter of the design you like.</p></header>
+:root{--bg:#070918;--bg2:#0C1030;--ink:#EDEFFF;--mu:#9AA3C7;--cy:#37E6FF;--pk:#FF3E9A;--ln:#232A52}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Archivo,"Noto Sans JP",sans-serif}
+.col{max-width:640px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media(min-width:700px){.col{max-width:760px}}
+.hero{position:relative;min-height:86vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,9,24,.42) 0%,rgba(7,9,24,0) 34%,rgba(7,9,24,.66) 68%,var(--bg) 100%)}
+.hero .in{position:relative;z-index:2;width:100%;padding:26px 0 30px}
+.kick{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.22em;text-transform:uppercase;color:var(--cy);border:1px solid var(--cy);padding:6px 10px;border-radius:999px;box-shadow:0 0 14px rgba(55,230,255,.35),inset 0 0 10px rgba(55,230,255,.18)}
+h1{font-stretch:62%;font-weight:900;text-transform:uppercase;white-space:nowrap;margin:16px 0 4px;font-size:min(8.8vw,72px);line-height:.92;text-shadow:0 0 22px rgba(255,62,154,.55)}
+h1 em{font-style:normal;color:var(--pk)}
+.hero p{margin:8px 0 0;max-width:34em;color:#D8DCF5;font-size:16.5px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.chips span{font-weight:900;letter-spacing:.08em;font-size:13px;border:1px solid var(--ln);background:rgba(12,16,48,.72);padding:8px 12px;border-radius:8px}
+.chips b{color:var(--cy)}
+.sec{padding:38px 0 4px}
+h2{font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:27px;margin:0 0 6px;white-space:nowrap}
+h2 .n{color:var(--pk)}
+.sub{color:var(--mu);margin:0 0 18px;font-size:15px}
+.route{background:var(--bg2);border:1px solid var(--ln);border-radius:16px;padding:20px;margin-top:16px}
+.route .rt{font-weight:900;letter-spacing:.2em;font-size:12px;color:var(--cy)}
+.route.pk .rt{color:var(--pk)}
+.route h3{margin:6px 0 4px;font-size:min(5.3vw,26px);font-stretch:62%;font-weight:900;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.route .theme{margin:0 0 14px;color:#D8DCF5;font-size:15.5px;font-weight:700}
+.route img.main{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;border:1px solid var(--ln);margin-bottom:10px}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 14px}
+.strip figure{margin:0}
+.strip img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;border:1px solid var(--ln)}
+.strip figcaption{font-size:11.5px;color:var(--mu);margin-top:5px;line-height:1.45}
+.steps{list-style:none;margin:0;padding:0 0 0 24px;position:relative}
+.steps:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--cy),var(--pk))}
+.steps li{position:relative;padding:5px 0;font-size:15px;color:#C9CEEA}
+.steps li:before{content:"";position:absolute;left:-22px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--bg);border:2.5px solid var(--cy)}
+.steps li b{color:var(--ink)}
+.hl{display:grid;gap:8px;margin-top:14px}
+.hl div{border:1px solid var(--ln);border-radius:10px;padding:10px 12px;font-size:14.5px;color:#C9CEEA}
+.hl div b{color:var(--cy)}
+.route.pk .hl div b{color:var(--pk)}
+.map{height:300px;border-radius:12px;border:1px solid var(--ln);margin-top:14px;z-index:0;background:#0A0E2A}
+@media(max-width:560px){.map{height:260px}}
+.npin{width:26px;height:26px;border-radius:50%;background:#0C1030;border:2px solid #37E6FF;color:#EDEFFF;font:900 13px Archivo,sans-serif;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px rgba(55,230,255,.5)}
+.tpin{width:52px;height:40px;border-radius:9px;border:2px solid #FF3E9A;overflow:hidden;background:#0C1030;box-shadow:0 0 12px rgba(255,62,154,.45);position:relative}
+.tpin img{width:100%;height:100%;object-fit:cover;display:block}
+.tpin b{position:absolute;top:0;left:0;background:#FF3E9A;color:#fff;font:900 11px Archivo,sans-serif;padding:1px 6px;border-radius:0 0 8px 0}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.meta span{font-size:12px;font-weight:900;letter-spacing:.08em;border:1px solid var(--ln);border-radius:999px;padding:5px 10px;color:var(--mu)}
+.best{margin:12px 0 0;font-size:14.5px;color:var(--mu)}
+.best b{color:var(--ink)}
+.fh{margin:20px 0 0;font-weight:900;letter-spacing:.16em;font-size:12px;color:var(--cy)}
+.route.pk .fh{color:var(--pk)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+@media(max-width:480px){.tiles{grid-template-columns:repeat(2,1fr)}}
+.tile{display:block;border:1px solid var(--ln);border-radius:12px;overflow:hidden;background:#0A0E2A;text-decoration:none;color:var(--ink)}
+.tile img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.tile .tb{display:block;padding:8px 10px 10px}
+.tile .tt{display:block;font-size:10px;font-weight:900;letter-spacing:.14em;color:var(--cy)}
+.route.pk .tile .tt{color:var(--pk)}
+.tile .tn{display:block;font-size:14.5px;font-weight:800;margin-top:2px;line-height:1.3}
+.tile .tc{display:inline-block;font-size:11px;font-weight:700;color:var(--mu);border:1px solid var(--ln);border-radius:999px;padding:2px 8px;margin-top:6px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.facts div{background:var(--bg2);border:1px solid var(--ln);border-radius:14px;padding:14px}
+.facts b{display:block;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--pk);margin-bottom:4px}
+.facts span{font-weight:700;font-size:14.5px;line-height:1.45;display:block}
+.know ul{margin:0;padding-left:20px;color:#C9CEEA}.know li{margin:9px 0}
+.foot{border-top:1px solid var(--ln);margin-top:40px;padding:20px 0 44px;color:var(--mu);font-size:13px;line-height:1.6}
+</style></head><body>
+<header class="hero"><img class="bg" src="img/hero-night.jpg" alt="Chuo-dori, Akihabara, at night — signs lit on both sides"><div class="in"><div class="col">
+<span class="kick">Tour proposal &middot; Akihabara, Tokyo</span>
+<h1>After dark, <em>three ways</em></h1>
+<p>One evening, three routes. Every walk starts in Akihabara and reads the town&rsquo;s history instead of its store list &mdash; the shrine on the hill, the parts maze under the tracks, the market, the book town. Pick the route that fits you &mdash; we confirm the details once you choose.</p>
+<div class="chips"><span><b>START</b> AKIHABARA</span><span><b>ROUTES</b> A / B / C</span><span><b>STYLE</b> PRIVATE WALK</span></div>
+</div></div></header>
+<div class="col">
+<section class="sec"><h2>Pick your <span class="n">route</span></h2><p class="sub">Same start &mdash; three different evenings.</p>
 
-<section class="card"><div class="hd"><div class="badge">A</div><div><h2>House Standard</h2><p class="one">The familiar Yulia-style layout: cream, ink and red, photo tiles to jump to each route, then a card per route.</p></div></div>
-<div class="pv"><iframe src="variant-a.html" title="Variant A preview" loading="lazy"></iframe></div>
-<a class="open" href="variant-a.html">Open full page A</a></section>
+<article class="route"><div class="rt">ROUTE A</div><h3>Akihabara in Depth</h3><p class="theme">One district, read deeply &mdash; how a black market became Electric Town, then the otaku capital.</p><img class="main" src="img/shrine-street.jpg" alt="The street below Kanda Myojin, lit up at night" loading="lazy">
+<div class="strip">
+<figure><img src="img/tracks-walk.jpg" alt="The corridor under the tracks in Akihabara" loading="lazy"><figcaption>Under the tracks: the parts maze</figcaption></figure>
+<figure><img src="img/showcase.jpg" alt="Figure showcase on Chuo-dori" loading="lazy"><figcaption>Showcase figures on Chuo-dori</figcaption></figure>
+<figure><img src="img/parts-aisle.jpg" alt="A tiny specialist shop near Radio Kaikan" loading="lazy"><figcaption>Tiny specialist shops fill the maze</figcaption></figure>
+</div>
+<ol class="steps"><li><b>Kanda Myojin at dusk</b> &mdash; the shrine on the hill</li><li><b>Back streets</b> down into the town</li><li><b>Under the tracks</b> &mdash; the parts maze</li><li><b>Chuo-dori</b> as the neon peaks</li><li><b>Radio Kaikan</b> and the night streets</li><li><b>Dinner</b> in the food lanes</li></ol>
+<div class="hl"><div><b>The shrine.</b> Founded in 730, moved to this hill in 1616 to guard Edo Castle &mdash; it still watches over the neighbourhood, and now blesses laptops too.</div><div><b>The birth of Electric Town.</b> Postwar radio-parts stalls, moved under the arches in 1949. The maze still trades.</div><div><b>Neon at its peak.</b> One street, three eras: appliances, computers, then anime and games.</div></div>
+<div class="map" id="map-a"></div>
+<div class="meta"><span>ABOUT 3 KM</span><span>FINISH: AKIHABARA</span></div>
+<p class="best"><b>Best for:</b> a first evening in Akihabara, and anime or game fans who want the story behind the shops.</p>
+<p class="fh">EAT &amp; DRINK ALONG THE WAY</p>
+<div class="tiles">
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A8%81%E9%A2%A8%20%E7%A7%8B%E8%91%89%E5%8E%9F%E5%BA%97%20%E7%A5%9E%E7%94%B0%E4%BD%90%E4%B9%85%E9%96%93%E7%94%BA1-20"><img src="img/food-a1.jpg" alt="Miso ramen at Ifu, Akihabara" loading="lazy"><span class="tb"><span class="tt">MISO RAMEN</span><span class="tn">IFU AKIHABARA</span><span class="tc">08:00&ndash;07:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B9%E3%82%B7%E3%83%AD%E3%83%BC%20%E7%A7%8B%E8%91%89%E5%8E%9F%E9%A7%85%E5%89%8D%E5%BA%97%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%A4%96%E7%A5%9E%E7%94%B01-18-19%20BiTO%20AKIBA%E3%83%93%E3%83%AB%20B1F"><img src="img/food-a2.jpg" alt="Sushi on a conveyor belt" loading="lazy"><span class="tb"><span class="tt">SUSHI BELT</span><span class="tn">SUSHIRO</span><span class="tc">11:00&ndash;23:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%B4%E3%83%BC%E3%82%B4%E3%83%BC%E3%82%AB%E3%83%AC%E3%83%BC%20%E7%A7%8B%E8%91%89%E5%8E%9F1%E5%8F%B7%E5%BA%97%20%E7%A5%9E%E7%94%B0%E4%BD%90%E4%B9%85%E9%96%93%E7%94%BA1-16-1"><img src="img/food-a3.jpg" alt="Go!Go!Curry storefront, Akihabara" loading="lazy"><span class="tb"><span class="tt">CURRY</span><span class="tn">GO!GO!CURRY</span><span class="tc">09:55&ndash;21:55</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%84%BC%E8%82%89%E3%83%88%E3%83%A9%E3%82%B8%20%E7%A7%8B%E8%91%89%E5%8E%9F%E5%BA%97%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E7%A5%9E%E7%94%B0%E4%BD%90%E4%B9%85%E9%96%93%E7%94%BA1-6-5%20%E3%82%A2%E3%82%AD%E3%83%90%E3%83%BB%E3%83%88%E3%83%AA%E3%83%A0%205F"><img src="img/food-a4.jpg" alt="Yakiniku on the grill" loading="lazy"><span class="tb"><span class="tt">YAKINIKU</span><span class="tn">YAKINIKU TORAJI</span><span class="tc">17:00&ndash;23:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A5%9E%E7%94%B0%E3%81%9F%E3%81%BE%E3%81%94%E3%81%91%E3%82%93%20%E7%A7%8B%E8%91%89%E5%8E%9F%E5%BA%97%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%8D%83%E4%BB%A3%E7%94%B0%E5%8C%BA%E5%A4%96%E7%A5%9E%E7%94%B03-14-3"><img src="img/food-a5.jpg" alt="Omurice at Kanda Tamagoken, Akihabara" loading="lazy"><span class="tb"><span class="tt">OMURICE</span><span class="tn">KANDA TAMAGOKEN</span><span class="tc">11:00&ndash;21:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%82%A4%E3%83%B3%E3%83%89%E3%82%AB%E3%83%AA%E3%83%BC%E3%83%80%E3%82%A4%E3%83%8B%E3%83%B3%E3%82%B0%20%E3%82%B3%E3%83%90%E3%83%A9%E3%83%98%E3%83%83%E3%82%BF%20%E3%83%A8%E3%83%89%E3%83%90%E3%82%B7AKIBA%E5%BA%97"><img src="img/food-a6.jpg" alt="Indian curry" loading="lazy"><span class="tb"><span class="tt">INDIAN CURRY</span><span class="tn">COBARA-HETTA</span><span class="tc">11:00&ndash;22:00</span></span></a>
+</div></article>
 
-<section class="card"><div class="hd"><div class="badge">B</div><div><h2>Night Neon</h2><p class="one">Dark navy with cyan and pink glow. Full-bleed night hero; each route is a glowing panel with a step-by-step line.</p></div></div>
-<div class="pv"><iframe src="variant-b.html" title="Variant B preview" loading="lazy"></iframe></div>
-<a class="open" href="variant-b.html">Open full page B</a></section>
+<article class="route pk"><div class="rt">ROUTE B</div><h3>Akiba &rarr; Okachimachi &rarr; Ameyoko</h3><p class="theme">Electric Town to market town &mdash; how working Tokyo eats, drinks and trades after dark.</p><img class="main" src="img/hero-tracks.jpg" alt="Ameyoko at night — the market entrance under the Ueno tracks" loading="lazy">
+<div class="strip">
+<figure><img src="img/b-ameyoko-above.jpg" alt="Ameyoko from above, stalls lit for the evening" loading="lazy"><figcaption>Ameyoko from above, stalls lit</figcaption></figure>
+<figure><img src="img/b-stall-cook.jpg" alt="A stall cook at work by the tracks" loading="lazy"><figcaption>A stall cook at work by the tracks</figcaption></figure>
+<figure><img src="img/b-under-tracks.jpg" alt="Under the elevated tracks near Okachimachi at night" loading="lazy"><figcaption>Under the tracks near Okachimachi</figcaption></figure>
+</div>
+<ol class="steps"><li><b>Akihabara</b> &mdash; the Electric Town edge</li><li><b>Suehirocho</b> back streets</li><li><b>2k540</b> &mdash; artisans in the arches</li><li><b>Okachimachi</b></li><li><b>Ameyoko market</b> while the stalls are open</li><li><b>Izakaya lanes</b> under the tracks, lit up</li></ol>
+<div class="hl"><div><b>Ameyoko, honestly sequenced.</b> Born as a postwar black market: candy stalls made it &ldquo;Candy Store Alley&rdquo;, American-goods shops added &ldquo;America Alley&rdquo;. The market winds down early in the evening &mdash; so we go there first, while the stalls are still open.</div><div><b>2k540.</b> Workshops in the railway arches. The name is a distance marker: 2 km 540 m from Tokyo Station.</div><div><b>The second act.</b> As the shutters fall, the under-track izakaya switch on. Dinner under the trains.</div></div>
+<div class="map" id="map-b"></div>
+<div class="meta"><span>ABOUT 4 KM</span><span>FINISH: OKACHIMACHI / UENO</span></div>
+<p class="best"><b>Best for:</b> food-and-market people, repeat Tokyo visitors, and anyone who prefers everyday local Tokyo to otaku culture.</p>
+<p class="fh">EAT &amp; DRINK ALONG THE WAY</p>
+<div class="tiles">
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%A4%A7%E7%B5%B1%E9%A0%98%20%E4%B8%8A%E9%87%8E"><img src="img/food-b1.jpg" alt="Daitoryo's storefront under the tracks, Ueno" loading="lazy"><span class="tb"><span class="tt">IZAKAYA</span><span class="tn">DAITORYO</span><span class="tc">10:00&ndash;23:30</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AB%8B%E3%81%A1%E9%A3%B2%E3%81%BF%20%E3%81%9F%E3%81%8D%E3%81%8A%E3%81%8B%20%E4%B8%8A%E9%87%8E"><img src="img/food-b2.jpg" alt="A covered drinking alley in Ameyoko" loading="lazy"><span class="tb"><span class="tt">STANDING BAR</span><span class="tn">TAKIOKA</span><span class="tc">7:00&ndash;23:30</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%AB%8B%E9%A3%B2%E3%81%BF%E3%82%AB%E3%83%89%E3%82%AF%E3%83%A9%20%E4%B8%8A%E9%87%8E"><img src="img/food-b3.jpg" alt="Tonpeiyaki and a beer at the counter" loading="lazy"><span class="tb"><span class="tt">STANDING BAR</span><span class="tn">KADOKURA</span><span class="tc">11:00&ndash;22:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E8%82%89%E3%81%AE%E5%A4%A7%E5%B1%B1%20%E4%B8%8A%E9%87%8E"><img src="img/food-b4.jpg" alt="Ameyoko's market alley" loading="lazy"><span class="tb"><span class="tt">MENCHI KATSU</span><span class="tn">NIKU NO OHYAMA</span><span class="tc">11:00&ndash;22:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%BE%8A%E9%A6%99%E5%91%B3%E5%9D%8A%20%E5%BE%A1%E5%BE%92%E7%94%BA"><img src="img/food-b5.jpg" alt="The covered market streets by Okachimachi" loading="lazy"><span class="tb"><span class="tt">LAMB CHINESE</span><span class="tn">YANGXIANG AJIBO</span><span class="tc">11:00&ndash;23:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E6%98%87%E9%BE%8D%20%E4%B8%8A%E9%87%8E"><img src="img/food-b6.jpg" alt="Pan-fried gyoza" loading="lazy"><span class="tb"><span class="tt">GYOZA</span><span class="tn">SHORYU</span><span class="tc">11:30&ndash;21:00</span></span></a>
+</div></article>
 
-<section class="card"><div class="hd"><div class="badge">C</div><div><h2>Editorial Magazine</h2><p class="one">A newspaper feel: serif display type on paper, drop cap, the three routes written up as magazine features.</p></div></div>
-<div class="pv"><iframe src="variant-c.html" title="Variant C preview" loading="lazy"></iframe></div>
-<a class="open" href="variant-c.html">Open full page C</a></section>
+<article class="route"><div class="rt">ROUTE C</div><h3>Akiba &rarr; Kanda &rarr; Jimbocho</h3><p class="theme">Old Tokyo, page by page &mdash; a shrine, a brick viaduct, and a book town that goes quiet after dark.</p><img class="main" src="img/maach-hall.jpg" alt="Inside the Manseibashi viaduct — the 1912 arches, now mAAch ecute" loading="lazy">
+<div class="strip">
+<figure><img src="img/soba-night.jpg" alt="A standing soba bar, lit up for the night crowd" loading="lazy"><figcaption>A standing soba bar, lit for the night crowd</figcaption></figure>
+<figure><img src="img/c-udon-night.jpg" alt="A standing udon bar near Ochanomizu at night" loading="lazy"><figcaption>A standing udon bar near Ochanomizu</figcaption></figure>
+<figure><img src="img/c-kanda-old.jpg" alt="An old wooden building in Kanda's back streets" loading="lazy"><figcaption>Old wooden frontages in Kanda</figcaption></figure>
+</div>
+<ol class="steps"><li><b>Kanda Myojin</b> &mdash; the shrine on the hill</li><li><b>Manseibashi &amp; mAAch</b> &mdash; coffee in the 1912 arches</li><li><b>Kanda station quarter</b> &mdash; old eateries, under-track lanes</li><li><b>Jimbocho</b> book streets</li><li><b>The quiet book town</b> after closing</li></ol>
+<div class="hl"><div><b>The vanished station.</b> Manseibashi opened in 1912, designed by Tatsuno Kingo of Tokyo Station; closed 1943, its viaduct lives on as mAAch ecute.</div><div><b>Old Kanda.</b> One of Edo&rsquo;s merchant and craftsman quarters &mdash; the back streets still carry it.</div><div><b>Jimbocho, two faces.</b> Around 130 secondhand bookshops, gathered as the Meiji-era universities arrived. Browse first; then the shuttered, lamplit street.</div></div>
+<div class="map" id="map-c"></div>
+<div class="meta"><span>ABOUT 4 KM</span><span>FINISH: JIMBOCHO</span></div>
+<p class="best"><b>Best for:</b> book lovers and history lovers, and anyone who prefers the calm of old Tokyo to the neon.</p>
+<p class="fh">EAT &amp; DRINK ALONG THE WAY</p>
+<div class="tiles">
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E5%91%B3%E5%9D%8A%20%E7%A5%9E%E7%94%B0"><img src="img/food-c1.jpg" alt="A sizzling pan dish in Kanda" loading="lazy"><span class="tb"><span class="tt">LAMB CHINESE</span><span class="tn">AJIBO</span><span class="tc">11:00&ndash;23:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E7%A5%9E%E7%94%B0%E3%81%BE%E3%81%A4%E3%82%84"><img src="img/food-c2.jpg" alt="Soba noodles, served zaru-style" loading="lazy"><span class="tb"><span class="tt">SOBA</span><span class="tn">KANDA MATSUYA</span><span class="tc">11:00&ndash;20:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%8B%E3%82%93%E3%81%A0%E3%82%84%E3%81%B6%E3%81%9D%E3%81%B0"><img src="img/food-c3.jpg" alt="A soba bar's sign lit up at night" loading="lazy"><span class="tb"><span class="tt">SOBA</span><span class="tn">KANDA YABU SOBA</span><span class="tc">11:30&ndash;20:30</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%81%BF%E3%81%BE%E3%81%99%E3%82%84%20%E7%A5%9E%E7%94%B0"><img src="img/food-c4.jpg" alt="A bar doorway in Kanda's back streets" loading="lazy"><span class="tb"><span class="tt">IZAKAYA</span><span class="tn">MIMASUYA</span><span class="tc">17:00&ndash;22:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%9C%E3%83%B3%E3%83%87%E3%82%A3%20%E7%A5%9E%E4%BF%9D%E7%94%BA%E6%9C%AC%E5%BA%97"><img src="img/food-c5.jpg" alt="Japanese curry rice" loading="lazy"><span class="tb"><span class="tt">CURRY</span><span class="tn">BONDY</span><span class="tc">11:00&ndash;22:00</span></span></a>
+<a class="tile" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%A9%E3%83%89%E3%83%AA%E3%82%AA%20%E7%A5%9E%E4%BF%9D%E7%94%BA"><img src="img/food-c6.jpg" alt="Ladrio's brick storefront, Jimbocho" loading="lazy"><span class="tb"><span class="tt">RETRO CAF&Eacute;</span><span class="tn">LADRIO</span><span class="tc">11:30&ndash;22:30</span></span></a>
+</div></article>
+</section>
 
-<section class="card"><div class="hd"><div class="badge">D</div><div><h2>Clean Minimal</h2><p class="one">White, one indigo accent, no decoration. Each route is a plain table: flow, distance, highlights, who it suits.</p></div></div>
-<div class="pv"><iframe src="variant-d.html" title="Variant D preview" loading="lazy"></iframe></div>
-<a class="open" href="variant-d.html">Open full page D</a></section>
-
-<section class="card"><div class="hd"><div class="badge">E</div><div><h2>Bold Poster</h2><p class="one">Poster energy: huge condensed type, a giant 16:00 &rarr; 21:00 graphic, and one big colour block per route.</p></div></div>
-<div class="pv"><iframe src="variant-e.html" title="Variant E preview" loading="lazy"></iframe></div>
-<a class="open" href="variant-e.html">Open full page E</a></section>
-
-<p class="note">All five variants carry the same content: three routes, the shared practical notes, and the guide&rsquo;s own photographs. Historical notes were checked against the Japan Tourism Agency, the Akihabara Electrical Town Organization, Kanda Myojin and JR East histories. Nothing has been sent to Kioka or the guest &mdash; this board is for choosing the design.</p>
-</div></body></html>
+<section class="sec"><h2>The <span class="n">practical</span> part</h2><p class="sub">Shared by all three routes</p>
+<div class="facts">
+<div><b>Start</b><span>JR Akihabara Station, Electric Town exit area</span></div>
+<div><b>Pace</b><span>An unhurried evening walk &mdash; time to browse, snack and look up</span></div>
+<div><b>Walking</b><span>Roughly 3&ndash;4 km, mostly flat; comfortable shoes, please</span></div>
+<div><b>Style</b><span>Private walk with a local guide, Yuuki</span></div>
+<div><b>Flexible</b><span>Stops bend with weather, crowds and curiosity</span></div>
+<div><b>Photos</b><span>Your guide shoots along the way and shares an album</span></div>
+</div></section>
+<section class="sec know"><h2>Good to <span class="n">know</span></h2><ul><li><b>January evenings are cold</b> &mdash; bring a warm layer; we are outside for much of the walk.</li><li><b>Closing times differ by route:</b> small parts shops, market stalls and bookshops wind down early in the evening; big stores, arcades and restaurants stay open late. Each route is sequenced around that.</li><li><b>Bring some cash</b> &mdash; small stalls, market shops and shrine charms are often cash only.</li><li><b>Shrine steps:</b> routes A and C include one flight of steps at Kanda Myojin.</li></ul></section>
+<p class="foot">A proposal page for a private evening walk in Akihabara, guided by Yuuki (Anime Sensei). Dates and details to be confirmed once a route is chosen. Most photographs are the guide&rsquo;s own, shot in Akihabara, Ueno&ndash;Ameyoko, Kanda and Jimbocho; the shrine photograph shows the street below Kanda Myojin on a winter evening. Three food photographs are generic dish shots via Wikimedia Commons: gyoza by Ocdp (CC0), curry rice by Ocdp (CC0), soba by 663highland (CC BY-SA 3.0). Restaurant hours checked against official and listing sources in November 2026 &mdash; they can change, so we confirm before the day. Historical notes checked against the Japan Tourism Agency, the Akihabara Electrical Town Organization, Kanda Myojin and JR East histories, November 2026. Maps &copy; OpenStreetMap contributors &copy; CARTO.</p>
+</div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+if(!window.L) return;
+var TILES='https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+var ATTR='&copy; OpenStreetMap contributors &copy; CARTO';
+function npin(n){return L.divIcon({className:'',html:'<div class="npin">'+n+'</div>',iconSize:[26,26],iconAnchor:[13,13]});}
+function tpin(n,img){return L.divIcon({className:'',html:'<div class="tpin"><img src="'+img+'" alt=""><b>'+n+'</b></div>',iconSize:[52,40],iconAnchor:[26,20]});}
+function build(id,pins,color){
+  var m=L.map(id,{scrollWheelZoom:false,attributionControl:true});
+  L.tileLayer(TILES,{attribution:ATTR,maxZoom:19}).addTo(m);
+  var pts=[];
+  pins.forEach(function(p){
+    pts.push([p[0],p[1]]);
+    L.marker([p[0],p[1]],{icon:p[3]?tpin(p[2],p[3]):npin(p[2])}).addTo(m);
+  });
+  L.polyline(pts,{color:color,weight:3,opacity:.85}).addTo(m);
+  m.fitBounds(L.latLngBounds(pts).pad(0.12));
+}
+build('map-a',[
+ [35.70194,139.76778,1],
+ [35.70050,139.77020,2],
+ [35.69854,139.77196,3,'img/tracks-walk.jpg'],
+ [35.69850,139.77200,4,'img/showcase.jpg'],
+ [35.69796,139.77166,5,'img/parts-aisle.jpg'],
+ [35.69720,139.77260,6]
+],'#37E6FF');
+build('map-b',[
+ [35.69840,139.77310,1],
+ [35.70240,139.77130,2],
+ [35.70260,139.77480,3],
+ [35.70730,139.77430,4],
+ [35.70930,139.77460,5,'img/b-ameyoko-above.jpg'],
+ [35.71100,139.77580,6]
+],'#FF3E9A');
+build('map-c',[
+ [35.70194,139.76778,1],
+ [35.69730,139.77090,2,'img/maach-hall.jpg'],
+ [35.69180,139.77090,3],
+ [35.69580,139.75770,4],
+ [35.69520,139.75900,5]
+],'#37E6FF');
+})();
+</script>
+</body></html>
