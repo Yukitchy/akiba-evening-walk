@@ -161,13 +161,14 @@ h2 .n{color:var(--pk)}
 <script>
 (function(){
 if(!window.L) return;
-var TILES='https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
-var ATTR='&copy; OpenStreetMap contributors &copy; CARTO';
+var ESRI='https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
+var ATTR='&copy; Esri, HERE, Garmin &copy; OpenStreetMap';
 function npin(n){return L.divIcon({className:'',html:'<div class="npin">'+n+'</div>',iconSize:[26,26],iconAnchor:[13,13]});}
 function tpin(n,img){return L.divIcon({className:'',html:'<div class="tpin"><img src="'+img+'" alt=""><b>'+n+'</b></div>',iconSize:[52,40],iconAnchor:[26,20]});}
 function build(id,pins,color){
   var m=L.map(id,{scrollWheelZoom:false,attributionControl:true});
-  L.tileLayer(TILES,{attribution:ATTR,maxZoom:19}).addTo(m);
+  L.tileLayer(ESRI+'World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{attribution:ATTR,maxZoom:19,maxNativeZoom:16}).addTo(m);
+  L.tileLayer(ESRI+'World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:19,maxNativeZoom:16}).addTo(m);
   var pts=[];
   pins.forEach(function(p){
     pts.push([p[0],p[1]]);
